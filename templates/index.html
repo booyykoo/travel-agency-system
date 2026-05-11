@@ -11,12 +11,19 @@
 
 <header class="header">
     <a th:href="@{/}" class="logo">TRAVEL<span>GO</span></a>
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
         <a th:href="@{/}">Home</a>
         <a th:href="@{/destinations}">Destinations</a>
         <a th:href="@{/contact}">Contact</a>
-        <a th:href="@{/login}" class="btn-login">Login / Register</a>
+        <a th:href="@{/login}" class="btn-login" id="navAuthBtn">Login / Register</a>
+        <div class="nav-user" id="navUser" style="display:none">
+            <span class="nav-username" id="navUsername"></span>
+            <button class="btn-logout" id="btnLogout">Logout</button>
+        </div>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
 <main>
@@ -65,6 +72,46 @@
             </div>
         </div>
     </section>
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Travellers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Absolutely unforgettable experience. TravelGo made every detail perfect from start to finish."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <strong>Sarah M.</strong>
+                            <span>Trip to Bali</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Best travel agency I've ever used. The packages are great value and the support team is always there."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <strong>James K.</strong>
+                            <span>Trip to Japan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★☆</div>
+                    <p class="testimonial-text">"Smooth booking process and amazing destinations. Will definitely book again through TravelGo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <strong>Anna L.</strong>
+                            <span>Trip to Santorini</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer class="footer">
@@ -93,6 +140,6 @@
         <p>&copy; 2026 TravelGo Platform. All rights reserved.</p>
     </div>
 </footer>
-
+<script src="../js/index.js" th:src="@{/index.js}"></script>
 </body>
 </html>

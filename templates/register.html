@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo - Register</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/register.css" th:href="@{/register.css}">
+</head>
+<body>
+
+<header class="header">
+    <a href="index.html" th:href="@{/}" class="logo">TRAVEL<span>GO</span></a>
+    <nav class="nav">
+        <a href="index.html" th:href="@{/}">Home</a>
+        <a th:href="@{/destinations}">Destinations</a>
+        <a th:href="@{/contact}">Contact</a>
+        <a href="login.html" th:href="@{/login}" class="btn-login">Login / Register</a>
+    </nav>
+</header>
+
+<div class="register-page">
+    <div class="register-wrapper">
+
+        <div class="register-aside">
+            <span class="aside-tag">New Account</span>
+            <h2 class="aside-title">Your next journey starts here</h2>
+            <p class="aside-sub">Join thousands of travellers who plan unforgettable trips with TravelGo.</p>
+        </div>
+
+        <div class="register-form-panel">
+            <a href="index.html" th:href="@{/}" class="logo">TRAVEL<span>GO</span></a>
+
+            <div class="register-form-content" id="formContent">
+                <h2>Create account</h2>
+                <p class="form-subtitle">Already have one? <a href="login.html" th:href="@{/login}">Sign in</a></p>
+
+                <div class="server-error" id="serverError"></div>
+                <form id="registerForm" novalidate>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="firstName">First Name <span class="opt">optional</span></label>
+                            <div class="input-wrap">
+                                <input type="text" id="firstName" name="firstName" placeholder="John" autocomplete="given-name">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="lastName">Last Name <span class="opt">optional</span></label>
+                            <div class="input-wrap">
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" autocomplete="family-name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+                        </div>
+                        <span class="field-error" id="emailError">&#9432; Please enter a valid email address.</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone <span class="opt">optional</span></label>
+                        <div class="input-wrap">
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                        </div>
+                        <span class="field-error" id="phoneError">&#9432; Please enter a valid phone number.</span>
+                    </div>
+                    >
+                    <div class="field">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="password" name="password" placeholder="Min. 8 characters" autocomplete="new-password">
+                            <button type="button" class="toggle-pw" data-target="password" aria-label="Show password">&#128065;</button>
+                        </div>
+                        <div class="pw-strength" id="pwStrength" style="display:none">
+                            <div class="pw-strength-bar">
+                                <span id="sb1"></span><span id="sb2"></span><span id="sb3"></span><span id="sb4"></span>
+                            </div>
+                            <span class="pw-strength-label" id="pwLabel">Weak</span>
+                        </div>
+                        <div class="pw-rules" id="pwRules" style="display:none">
+                            <div class="pw-rule" id="ruleLen">
+                                <span class="rule-icon">&#10003;</span> At least 8 characters
+                            </div>
+                            <div class="pw-rule" id="ruleNum">
+                                <span class="rule-icon">&#10003;</span> Contains a number
+                            </div>
+                            <div class="pw-rule" id="ruleSpec">
+                                <span class="rule-icon">&#10003;</span> Contains a special character
+                            </div>
+                        </div>
+                        <span class="field-error" id="passwordError">&#9432; Password must be at least 8 characters, include a number and a special character.</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password" autocomplete="new-password">
+                            <button type="button" class="toggle-pw" data-target="confirmPassword" aria-label="Show password">&#128065;</button>
+                        </div>
+                        <span class="field-error" id="confirmPasswordError">&#9432; Passwords do not match.</span>
+                    </div>
+
+                    <button type="submit" class="btn-register" id="submitBtn" disabled>
+                        <div class="spinner"></div>
+                        <span class="btn-text">Create Account</span>
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="success-overlay" id="successOverlay">
+                <div class="success-icon">&#10003;</div>
+                <h3>You're all set!</h3>
+                <p>Your account has been created successfully.<br>Welcome to TravelGo.</p>
+                <a href="login.html" th:href="@{/login}" class="btn-login-link">Go to Login</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <p>Email: support@travelgo.com</p>
+            <p>Phone: +1 (555) 123-4567</p>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <nav class="footer-nav">
+                <a th:href="@{/terms}">Terms of Use</a>
+                <a th:href="@{/privacy}">Privacy Policy</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 TravelGo Platform. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="../js/register.js"></script>
+</body>
+</html>
