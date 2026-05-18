@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelGo - Tour Details</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="../static/tour-details.css" th:href="@{/tour-details.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <a th:href="@{/}" class="logo">TRAVEL<span>GO</span></a>
+    <nav class="nav" id="mainNav">
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/destinations}">Destinations</a>
+        <a th:href="@{/contact}">Contact</a>
+        <a th:href="@{/cart}" class="nav-cart" id="navCart">🛒 Cart</a>
+        <a th:href="@{/login}" class="btn-login" id="navAuthBtn">Login / Register</a>
+        <div class="nav-user" id="navUser" style="display:none">
+            <span class="nav-username" id="navUsername"></span>
+            <button class="btn-logout" id="btnLogout">Logout</button>
+        </div>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main class="tour-details-page">
+
+    <!-- Loading state -->
+    <div class="details-loading" id="detailsLoading">
+        <div class="spinner-lg"></div>
+        <p>Loading tour details...</p>
+    </div>
+
+    <!-- Error state -->
+    <div class="details-error" id="detailsError" style="display:none">
+        <div class="error-icon">✕</div>
+        <h2>Tour not found</h2>
+        <p>The tour you're looking for doesn't exist or has been removed.</p>
+        <a th:href="@{/destinations}" class="btn-back">Browse All Tours</a>
+    </div>
+
+    <!-- Content -->
+    <div class="details-content container" id="detailsContent" style="display:none">
+
+        <a th:href="@{/destinations}" class="back-link">← Back to Tours</a>
+
+        <div class="details-grid">
+
+            <!-- Left: image -->
+            <div class="details-image-wrap">
+                <div class="details-image" id="tourImage"></div>
+                <div class="details-badge" id="tourDuration"></div>
+            </div>
+
+            <!-- Right: info -->
+            <div class="details-info">
+                <span class="details-tag" id="tourDestination"></span>
+                <h1 class="details-title" id="tourTitle"></h1>
+                <p class="details-description" id="tourDescription"></p>
+
+                <div class="details-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Duration</span>
+                        <span class="meta-value" id="metaDuration">—</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Destination</span>
+                        <span class="meta-value" id="metaDestination">—</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Price</span>
+                        <span class="meta-value price-lg" id="metaPrice">—</span>
+                    </div>
+                </div>
+
+                <!-- Add to cart -->
+                <div class="details-actions">
+                    <button class="btn-add-cart" id="btnAddCart">
+                        <span class="btn-text">🛒 Add to Cart</span>
+                        <div class="spinner" id="cartSpinner"></div>
+                    </button>
+                    <span class="cart-feedback" id="cartFeedback"></span>
+                </div>
+
+                <!-- Not logged in warning -->
+                <div class="login-warning" id="loginWarning" style="display:none">
+                    ⚠ Please <a th:href="@{/login}">sign in</a> to add tours to your cart.
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <p>Email: support@travelgo.com</p>
+            <p>Phone: +1 (555) 123-4567</p>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <nav class="footer-nav">
+                <a th:href="@{/terms}">Terms of Use</a>
+                <a th:href="@{/privacy}">Privacy Policy</a>
+            </nav>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 TravelGo Platform. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="/static/tour-details.js" th:src="@{/tour-details.js}"></script>
+</body>
+</html>
